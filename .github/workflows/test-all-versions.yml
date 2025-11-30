@@ -134,6 +134,18 @@ jobs:
       RUN_REDIS_TESTS: 1
       NPM_CONFIG_UNSAFE_PERM: true
     steps:
+      # See https://github.com/bullfrogsec/bullfrog for more options
+      - name: Bullfrog
+        uses: bullfrogsec/bullfrog@1831f79cce8ad602eef14d2163873f27081ebfb3 # v0.8.4
+        with:
+          api-token: ${{ secrets.BULLFROG_API_TOKEN }}
+          egress-policy: audit
+      # See https://github.com/bullfrogsec/bullfrog for more options
+      - name: Bullfrog
+        uses: bullfrogsec/bullfrog@1831f79cce8ad602eef14d2163873f27081ebfb3 # v0.8.4
+        with:
+          api-token: ${{ secrets.BULLFROG_API_TOKEN }}
+          egress-policy: audit
       - name: Checkout
         uses: actions/checkout@v4
         with:
